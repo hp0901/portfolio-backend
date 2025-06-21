@@ -1,0 +1,34 @@
+# Node.js
+node_modules/
+.env
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+.vscode/ # Optional: if you don't want to commit VS Code settings
+*.swp
+*.swo
+
+# Build outputs
+build/
+dist/
+out/
+.next/ # Next.js specific
+.parcel-cache/ # Parcel specific
+.cache/ # General cache
+coverage/ # Test coverage reports
+
+# Sensitive files specific to MERN components (if they exist)
+client/node_modules/
+server/node_modules/
+client/.env # If your client has its own .env
+server/.env # If your server has its own .env
