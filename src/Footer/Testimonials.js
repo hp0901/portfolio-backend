@@ -91,14 +91,16 @@ function shuffleArray(array) {
 
 const generateTestimonialCards = () => {
   const repeated = [];
-  let globalIdCounter = 0;
+  let globalIdCounter = 0; // Initialize counter
+
   for (let i = 0; i < 3; i++) {
-    repeated.push(
-      ...testimonialsData.map((t) => ({
-        ...t,
-        id: ++globalIdCounter,
-      }))
-    );
+    for (let j = 0; j < testimonialsData.length; j++) {
+      globalIdCounter++;
+      repeated.push({
+        ...testimonialsData[j],
+        id: globalIdCounter, // Use the incremented counter
+      });
+    }
   }
   return shuffleArray(repeated);
 };
