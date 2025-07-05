@@ -1,0 +1,54 @@
+/* styles.css or App.css */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding: 12px 20px;
+  background: linear-gradient(to right, #6b21a8, #312e81);
+  color: white;
+}
+
+.menu-icon,
+.logo-container {
+  min-width: 50px;
+}
+
+.navbar-center {
+  flex: 1;
+  text-align: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive breakpoints */
+@media screen and (max-width: 480px) {
+  .header-container {
+    padding: 10px 12px;
+  }
+
+  .navbar-center {
+    font-size: 14px;
+  }
+
+  .menu-icon,
+  .logo-container {
+    width: 40px;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

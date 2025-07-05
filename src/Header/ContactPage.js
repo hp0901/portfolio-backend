@@ -52,7 +52,7 @@ const ContactPage = () => {
     }
 
     try {
-      const response = await fetch("https://portfolio-temp-8ktzoibca-harsh-patels-projects-0210bdd8.vercel.app", {
+      const response = await fetch("http://localhost:5000/send-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
