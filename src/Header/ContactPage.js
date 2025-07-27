@@ -50,13 +50,16 @@ const ContactPage = () => {
       setErrors(validationErrors);
       return;
     }
-
+    console.log("going to backend");
     try {
-      const response = await fetch("http://localhost:5000/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-  });
+      const response = await fetch("http://localhost:3001/contact/send-email", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(formData),
+});
+
+
+  console.log(formData);
 
 
       if (!response.ok) throw new Error("Network error");
@@ -85,149 +88,149 @@ const ContactPage = () => {
       </h1>
 
       <form
-        onSubmit={handleSubmit}
-        className="grid md:grid-cols-2 gap-8 bg-gray-900/50 p-10 rounded-3xl border border-pink-500/30 shadow-inner shadow-pink-500/10"
+  onSubmit={handleSubmit}
+  className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 bg-gray-900/50 p-4 sm:p-6 md:p-10 rounded-3xl border border-pink-500/30 shadow-inner shadow-pink-500/10"
+>
+  {/* Full Name */}
+  <div className="col-span-1 sm:col-span-2">
+    <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Full Name *</label>
+    <input
+      type="text"
+      name="fullName"
+      value={formData.fullName}
+      onChange={handleChange}
+      className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.fullName ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
+      placeholder="Your full name"
+    />
+    {errors.fullName && <p className="text-red-400 text-xs mt-1">{errors.fullName}</p>}
+  </div>
+
+  {/* Phone Number */}
+  <div>
+    <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Phone Number *</label>
+    <input
+      type="tel"
+      name="phone"
+      value={formData.phone}
+      onChange={handleChange}
+      placeholder="+91xxxxxxxxxx"
+      className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.phone ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
+    />
+    {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
+  </div>
+
+  {/* Alternate Number */}
+  <div>
+    <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Alternate Number (Optional)</label>
+    <input
+      type="tel"
+      name="alternatePhone"
+      value={formData.alternatePhone}
+      onChange={handleChange}
+      placeholder="+91xxxxxxxxxx"
+      className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.alternatePhone ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
+    />
+    {errors.alternatePhone && <p className="text-red-400 text-xs mt-1">{errors.alternatePhone}</p>}
+  </div>
+
+  {/* Date of Birth */}
+  <div>
+    <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Date of Birth</label>
+    <div className="relative">
+      <input
+        type="date"
+        name="dob"
+        id="dob"
+        value={formData.dob}
+        onChange={handleChange}
+        className="w-full pr-12 px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none appearance-none text-sm sm:text-base"
+      />
+      <button
+        type="button"
+        onClick={() => document.getElementById("dob")?.showPicker?.()}
+        className="absolute inset-y-0 right-4 flex items-center text-pink-400 text-lg sm:text-xl"
       >
-        {/* Full Name */}
-        <div className="col-span-2">
-          <label className="block mb-2 text-indigo-300 font-semibold">Full Name *</label>
-          <input
-            type="text"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            className={`w-full px-6 py-3 bg-gray-800 text-white rounded-xl border-2 ${
-              errors.fullName ? "border-red-500" : "border-pink-500/20"
-            } focus:ring-2 focus:ring-pink-500 outline-none`}
-            placeholder="Your full name"
-          />
-          {errors.fullName && <p className="text-red-400 text-sm mt-1">{errors.fullName}</p>}
-        </div>
+        📅
+      </button>
+    </div>
+  </div>
 
-        {/* Phone */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold">Phone Number *</label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="+91xxxxxxxxxx"
-            className={`w-full px-6 py-3 bg-gray-800 text-white rounded-xl border-2 ${
-              errors.phone ? "border-red-500" : "border-pink-500/20"
-            } focus:ring-2 focus:ring-pink-500 outline-none`}
-          />
-          {errors.phone && <p className="text-red-400 text-sm mt-1">{errors.phone}</p>}
-        </div>
+  {/* Gender */}
+  <div>
+    <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Gender</label>
+    <select
+      name="gender"
+      value={formData.gender}
+      onChange={handleChange}
+      className="w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base"
+    >
+      <option value="">Select</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+      <option value="Prefer not to say">Prefer not to say</option>
+    </select>
+  </div>
 
-        {/* Alternate Phone */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold">Alternate Number (Optional)</label>
-          <input
-            type="tel"
-            name="alternatePhone"
-            value={formData.alternatePhone}
-            onChange={handleChange}
-            placeholder="+91xxxxxxxxxx"
-            className={`w-full px-6 py-3 bg-gray-800 text-white rounded-xl border-2 ${
-              errors.alternatePhone ? "border-red-500" : "border-pink-500/20"
-            } focus:ring-2 focus:ring-pink-500 outline-none`}
-          />
-          {errors.alternatePhone && <p className="text-red-400 text-sm mt-1">{errors.alternatePhone}</p>}
-        </div>
+  {/* Subject */}
+  <div>
+    <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Subject *</label>
+    <input
+      type="text"
+      name="subject"
+      value={formData.subject}
+      onChange={handleChange}
+      placeholder="Email subject"
+      className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.subject ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
+    />
+    {errors.subject && <p className="text-red-400 text-xs mt-1">{errors.subject}</p>}
+  </div>
 
-        {/* DOB */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold">Date of Birth</label>
-          <input
-            type="date"
-            name="dob"
-            value={formData.dob}
-            onChange={handleChange}
-            className="w-full px-6 py-3 bg-gray-800 text-white rounded-xl border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none"
-          />
-        </div>
+  {/* Recipient Email */}
+  <div>
+    <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Recipient Email *</label>
+    <input
+      type="email"
+      name="recipientEmail"
+      value={formData.recipientEmail}
+      onChange={handleChange}
+      placeholder="recipient@example.com"
+      className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.recipientEmail ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
+    />
+    {errors.recipientEmail && <p className="text-red-400 text-xs mt-1">{errors.recipientEmail}</p>}
+  </div>
 
-        {/* Gender */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold">Gender</label>
-          <select
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            className="w-full px-6 py-3 bg-gray-800 text-white rounded-xl border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none"
-          >
-            <option value="">Select</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-            <option value="Prefer not to say">Prefer not to say</option>
-          </select>
-        </div>
+  {/* Message */}
+  <div className="col-span-1 sm:col-span-2">
+    <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Message</label>
+    <textarea
+      name="message"
+      value={formData.message}
+      onChange={handleChange}
+      placeholder="Your message..."
+      rows="4"
+      className="w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base"
+    ></textarea>
+  </div>
 
-        {/* Subject */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold">Subject *</label>
-          <input
-            type="text"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            placeholder="Email subject"
-            className={`w-full px-6 py-3 bg-gray-800 text-white rounded-xl border-2 ${
-              errors.subject ? "border-red-500" : "border-pink-500/20"
-            } focus:ring-2 focus:ring-pink-500 outline-none`}
-          />
-          {errors.subject && <p className="text-red-400 text-sm mt-1">{errors.subject}</p>}
-        </div>
+  {/* Submit Button */}
+  <div className="col-span-1 sm:col-span-2 text-center mt-2">
+    <button
+      type="submit"
+      className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500 text-white text-base rounded-full shadow-lg hover:scale-105 transition-transform"
+    >
+      ✉️ Send Email
+    </button>
+  </div>
 
-        {/* Email */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold">Recipient Email *</label>
-          <input
-            type="email"
-            name="recipientEmail"
-            value={formData.recipientEmail}
-            onChange={handleChange}
-            placeholder="recipient@example.com"
-            className={`w-full px-6 py-3 bg-gray-800 text-white rounded-xl border-2 ${
-              errors.recipientEmail ? "border-red-500" : "border-pink-500/20"
-            } focus:ring-2 focus:ring-pink-500 outline-none`}
-          />
-          {errors.recipientEmail && (
-            <p className="text-red-400 text-sm mt-1">{errors.recipientEmail}</p>
-          )}
-        </div>
+  {/* Submission Status */}
+  {submitStatus && (
+    <p className="col-span-1 sm:col-span-2 text-center mt-4 text-sm text-green-400 font-medium">
+      {submitStatus}
+    </p>
+  )}
+</form>
 
-        {/* Message */}
-        <div className="col-span-2">
-          <label className="block mb-2 text-indigo-300 font-semibold">Message</label>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Your message..."
-            rows="4"
-            className="w-full px-6 py-4 bg-gray-800 text-white rounded-xl border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none"
-          ></textarea>
-        </div>
-
-        {/* Submit */}
-        <div className="col-span-2 text-center mt-4">
-          <button
-            type="submit"
-            className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500 text-white text-lg px-10 py-4 rounded-full shadow-lg hover:scale-105 transition-transform"
-          >
-            ✉️ Send Email
-          </button>
-        </div>
-
-        {submitStatus && (
-          <p className="col-span-2 text-center mt-4 text-lg font-medium text-green-400">
-            {submitStatus}
-          </p>
-        )}
-      </form>
     </div>
   );
 };

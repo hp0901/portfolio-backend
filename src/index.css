@@ -7,5 +7,12 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+/* index.css */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+
+
 /* index.css or input.css if separated */
 
