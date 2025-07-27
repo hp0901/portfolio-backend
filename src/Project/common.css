@@ -1,0 +1,66 @@
+.shimmering-border-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05); /* transparent white */
+  backdrop-filter: blur(10px);           /* blur the background */
+  -webkit-backdrop-filter: blur(10px); /* for Safari */
+  z-index: 0;
+  overflow: hidden;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.shimmering-border-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem;
+  padding: 2px;
+  background: linear-gradient(
+    120deg,
+    #ff69b4,   /* pink */
+    #ff4500,   /* orange red */
+    #00ffff,   /* cyan */
+    #87ceeb,   /* sky blue */
+    #ff69b4    /* loop back to pink */
+  );
+  background-size: 300% 300%;
+  animation: shimmer 4s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+.shimmering-border-link:hover {
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
