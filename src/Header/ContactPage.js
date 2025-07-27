@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../index.css";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -52,7 +53,8 @@ const ContactPage = () => {
     }
     console.log("going to backend");
     try {
-      const response = await fetch("http://localhost:3001/contact/send-email", {
+      console.log("API Base URL:", API_BASE_URL); // helps you debug
+      const response = await fetch(`https://portfolio-c92y-nnjvra3q4-harsh-patels-projects-0210bdd8.vercel.app/contact/send-email`, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(formData),

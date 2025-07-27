@@ -10,8 +10,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-console.log("Email user:", process.env.EMAIL_USER ? "set" : "not set");
-console.log("Email pass:", process.env.EMAIL_PASS ? "set" : "not set");
+console.log("Email user:", process.env.MAIL_USER ? "set" : "not set");
+console.log("Email pass:", process.env.MAIL_PASS ? "set" : "not set");
 
 
 module.exports = transporter;
