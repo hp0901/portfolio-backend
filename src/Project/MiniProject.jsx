@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './common.css'; // Assuming you have a common.css for shared styles
+import testomonials from '../photos/testimonials.png';
+import reactToast from '../photos/toast.png';
+
 export default function MiniProject() {
   const [expandedProjectId, setExpandedProjectId] = useState(null);
 
@@ -7,14 +10,14 @@ export default function MiniProject() {
     {
       id: 1,
       name: "React Hot Toast Integration",
-      imageUrl: "http://googleusercontent.com/image_collection/image_retrieval/18319395219877741962",
+      imageUrl: reactToast,
       description: "This project showcases the seamless integration of react-hot-toast, a lightweight and highly customizable notification library. It demonstrates how to implement elegant and user-friendly 'toast' messages for various events like success, error, and loading states, enhancing the overall user experience with subtle, yet effective, feedback.",
       url: "https://react-toast-hp.netlify.app/"
     },
     {
       id: 2,
       name: "Testimonials Carousel/Section",
-      imageUrl: "http://googleusercontent.com/image_collection/image_retrieval/17773867859956842584",
+      imageUrl: testomonials,
       description: "A clean and responsive component dedicated to displaying customer testimonials. This project highlights my ability to structure dynamic content, often featuring a carousel or slider, to effectively build trust and social proof by showcasing positive user feedback in an engaging way.",
       url: "https://testomenials.netlify.app/"
     },
@@ -46,8 +49,7 @@ export default function MiniProject() {
             <img
               src={project.imageUrl}
               alt={project.name}
-              className="w-full h-40 object-cover rounded-xl mb-4 shadow-md"
-            />
+              className="w-full h-auto max-h-auto object-contain rounded-xl mb-4 shadow-md"/>
             <h2 className="text-xl font-semibold mb-2 text-white">{project.name}</h2>
             <p className="text-sm text-gray-300 flex-grow">
               {expandedProjectId === project.id

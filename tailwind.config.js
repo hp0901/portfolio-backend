@@ -1,23 +1,47 @@
-// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    // Ensure this array correctly points to all your files that use Tailwind classes,
-    // e.g., './src/**/*.{js,jsx,ts,tsx}', './public/index.html'
-    './src/**/*.{js,jsx,ts,tsx}', // <--- Make sure this line is correct for your project
+    './src/**/*.{js,jsx,ts,tsx}',
+    './public/index.html'
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'], // Use Google Font Inter
+      },
       animation: {
-        spin: 'spin 4s linear infinite', // Make sure this line exists
+        spinSlow: 'spin 4s linear infinite', // Custom slow spin
+        fadeIn: 'fadeIn 0.5s ease-in-out',
+        slideUp: 'slideUp 0.5s ease-out',
       },
       keyframes: {
         spin: {
-          from: { transform: 'rotate(0deg)' },
-          to: { transform: 'rotate(360deg)' },
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: 0 },
+          '100%': { transform: 'translateY(0)', opacity: 1 },
+        },
+      },
+      colors: {
+        primary: {
+          light: '#eff6ff',
+          DEFAULT: '#3b82f6',
+          dark: '#1e40af',
+        },
+        gray: {
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          900: '#111827',
         }
-      }
+      },
     },
   },
+  darkMode: 'class', // Enable dark mode toggling with 'class'
   plugins: [],
-}
+};

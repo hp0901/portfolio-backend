@@ -9,7 +9,7 @@ import {
   FaRocket,
   FaEnvelope,
 } from "react-icons/fa";
-import { motion } from "framer-motion";
+
 
 const Footer = () => {
   const sections = {
@@ -56,12 +56,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white px-6 py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-7xl mx-auto"
-      >
+      
         {/* Header Row: Logo + Newsletter */}
         <div className="flex flex-col items-center justify-center gap-6 mb-10">
           <div className="flex items-center gap-2 text-2xl font-bold text-cyan-400 transition-all  cursor-pointer">
@@ -123,7 +118,6 @@ const Footer = () => {
         <div className="mt-10 text-xs text-gray-400 text-center">
           Made with ❤️ by <span className="text-cyan-400">Harsh Patel</span> • © 2025. All rights reserved.
         </div>
-      </motion.div>
     </footer>
   );
 };

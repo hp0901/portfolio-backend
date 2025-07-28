@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './common.css'; 
+import passwordgenerator from '../photos/pg.png';
+import googlesearch from '../photos/gs.png';
 
 export default function MidiumProject() {
   const [expandedProjectId, setExpandedProjectId] = useState(null);
@@ -8,14 +10,14 @@ export default function MidiumProject() {
     {
       id: 1,
       name: "Google Search Redirect",
-      imageUrl: "http://googleusercontent.com/image_collection/image_retrieval/11183755247252945232",
+      imageUrl: googlesearch,
       description: "This interactive web application allows users to input a search query and instantly redirects them to Google, displaying relevant search results. It demonstrates dynamic URL manipulation, user input handling, and a practical application of client-side redirection to streamline information retrieval.",
       url: "https://redirect-google-hp.netlify.app/"
     },
     {
       id: 2,
       name: "Random Password Generator (with Advanced Features)",
-      imageUrl: "http://googleusercontent.com/image_collection/image_retrieval/3301815467657023732",
+      imageUrl: passwordgenerator,
       description: "A robust and secure random password generator built with JavaScript. This project offers comprehensive customization, allowing users to select character types (uppercase, lowercase, numbers, special symbols) and set password length. It also provides real-time strength feedback (weak, medium, strong) visually, demonstrating strong logical implementation and user interface design for enhanced security.",
       url: "https://password-generator-hp.netlify.app/"
     },
@@ -46,7 +48,7 @@ export default function MidiumProject() {
             <img
               src={project.imageUrl}
               alt={project.name}
-              className="w-full h-40 object-cover rounded-xl mb-4 shadow-md"
+              className="w-full h-auto max-h-auto object-contain rounded-xl mb-4 shadow-md"
             />
             <h2 className="text-xl font-semibold mb-2 text-white">{project.name}</h2>
             
